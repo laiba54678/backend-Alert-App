@@ -10,3 +10,4 @@ pydantic-settings==2.4.0
 email-validator==2.2.0
 gunicorn
 certifi
+certifi==2024.8.30
