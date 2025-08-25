@@ -6,4 +6,5 @@ aiokafka==0.10.0
 python-dotenv==1.0.1
 pydantic==2.8.2
 pydantic-settings==2.4.0
-email-validator==2.2.0gunicorn
+email-validator==2.2.0
+gunicorn
