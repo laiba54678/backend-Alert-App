@@ -5,12 +5,12 @@ import os
 _client: AsyncIOMotorClient | None = None
 _db: AsyncIOMotorDatabase | None = None
 
-def get_db() -> AsyncIOMotorDatabase:
-    global _client, _db
-    if _db is None:
-        _client = AsyncIOMotorClient(settings.MONGO_URI)
-        _db = _client[settings.MONGO_DB]
-    return _db
+# def get_db() -> AsyncIOMotorDatabase:
+#     global _client, _db
+#     if _db is None:
+#         _client = AsyncIOMotorClient(settings.MONGO_URI)
+#         _db = _client[settings.MONGO_DB]
+#     return _db
 
 # Try certifi first, fall back to system CA bundle (works on Render images)
 ca_file = None
