@@ -20,12 +20,25 @@ from pydantic import BaseModel
 
 app = FastAPI(title="Panic Backend", version="1.0.0")
 
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["*"],
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+#     allow_credentials=True,
+# )
+
+ALLOWED_ORIGINS = [
+    "https://alert-app-one.vercel.app",  # your frontend URL
+    "http://localhost:5173",             # local dev (Vite)
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_methods=["*"],
     allow_headers=["*"],
-    allow_credentials=True,
+    allow_credentials=False,
 )
 
 @app.get("/ping")
@@ -521,31 +534,6 @@ async def report_alerts_summary(from_: Optional[str] = None, to: Optional[str] =
     }
 
 
-#settings
-
-# class SettingsIn(BaseModel):
-#     system_name: Optional[str] = None
-#     timezone: Optional[str] = None
-#     language: Optional[str] = None
-#     alert_types: Optional[List[str]] = None
-
-# @app.get("/settings")
-# async def get_settings():
-#     db = get_db()
-#     doc = await db.settings.find_one({"_id": "global"}) or {}
-#     return {
-#         "system_name": doc.get("system_name","Panic Alert System"),
-#         "timezone": doc.get("timezone","UTC"),
-#         "language": doc.get("language","English"),
-#         "alert_types": doc.get("alert_types", ["medical","fire","police","utility"])
-#     }
-
-# @app.put("/settings")
-# async def put_settings(body: SettingsIn):
-#     db = get_db()
-#     update = {"$set": {k:v for k,v in body.model_dump(exclude_unset=True).items()}}
-#     await db.settings.update_one({"_id": "global"}, update, upsert=True)
-#     return {"updated": True}
 
 
 # --- replace your current SettingsIn with this ---
