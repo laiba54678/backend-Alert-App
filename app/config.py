@@ -1,9 +1,12 @@
+# app/config.py
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    MONGO_URI: str
-    MONGO_DB: str = "panic_app"
-    KAFKA_BOOTSTRAP_SERVERS: str = "localhost:9092"
+    # Safe defaults so it works even if Render env vars are empty/missing
+    MONGO_URI: str = "mongodb+srv://laiba:laiba123456@cluster0.gaxu9d6.mongodb.net/?retryWrites=true&w=majority&authSource=admin"
+    MONGO_DB: str = "laiba"
+
+    KAFKA_BOOTSTRAP_SERVERS: str = ""   # leave empty until you configure Kafka
     KAFKA_TOPIC_ALERTS: str = "alerts"
     APP_HOST: str = "0.0.0.0"
     APP_PORT: int = 8000
