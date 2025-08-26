@@ -29,7 +29,7 @@ app = FastAPI(title="Panic Backend", version="1.0.0")
 # )
 
 ALLOWED_ORIGINS = [
-    "https://alert-app-one.vercel.app",  # your frontend URL
+    "https://alert-app-2.vercel.app/",  # your frontend URL
     "http://localhost:5173",             # local dev (Vite)
 ]
 
