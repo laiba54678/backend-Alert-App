@@ -29,8 +29,9 @@ app = FastAPI(title="Panic Backend", version="1.0.0")
 # )
 
 ALLOWED_ORIGINS = [
-       "https://alert-app-2-kjzee36pr-laiba54678s-projects.vercel.app",  # your frontend URL,  # your frontend URL
+    "https://alert-app-2-6x7jl828u-laiba54678s-projects.vercel.app",  # CORRECTED URL
     "http://localhost:5173",             # local dev (Vite)
+    "http://localhost:3000",             # local dev (Next.js default)
 ]
 
 app.add_middleware(
